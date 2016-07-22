@@ -5,14 +5,14 @@
               xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
     
     <info>
-        <appname>Spark</appname>
+        <appname>RuoffMessenger</appname>
         <appversion>2.7.2</appversion>
-        <url>http://www.igniterealtime.org</url>
+        <url>http://www.ruoff.com</url>
         <!--<pack200/>-->           <!-- Problem with the latest IzPack Release -->
         <!--<run-privileged />-->   <!-- Problem with the latest IzPack Release -->
         <javaversion>1.7</javaversion>
         <requiresjdk>no</requiresjdk>
-        <run-privileged uninstaller="yes" />
+        <!-- <run-privileged uninstaller="yes" /> -->
     </info>
     
     <guiprefs width="640" height="480" resizable="no">
@@ -55,11 +55,11 @@
         <packs>
             <pack name="Spark" required="yes">
                 <description>Spark Client</description>
-                    <file src="src/resources/images/spark.ico"	    targetdir="$INSTALL_PATH/resources/" />
-                    <file src="src/resources/images/spark-32x32.png"	targetdir="$INSTALL_PATH/resources/" />
-                    <file src="target/build/Spark.exe"				targetdir="$INSTALL_PATH" os="windows" />
+                    <file src="src/resources/images/RuoffMessenger.ico"	    targetdir="$INSTALL_PATH/resources/" />
+                    <file src="src/resources/images/RuoffMessenger-32x32.png"	targetdir="$INSTALL_PATH/resources/" />
+                    <file src="target/build/RuoffMessenger.exe"				targetdir="$INSTALL_PATH" os="windows" />
                     <file src="target/build/starter.exe"				targetdir="$INSTALL_PATH" os="windows" />
-                    <file src="build/installer/izpack/spark" 			targetdir="$INSTALL_PATH" os="unix" />
+                    <file src="build/installer/izpack/RuoffMessenger" 			targetdir="$INSTALL_PATH" os="unix" />
                     <fileset dir="target/build/lib" 					targetdir="$INSTALL_PATH/lib/" />
                     <fileset dir="target/build/plugins"					targetdir="$INSTALL_PATH/plugins/" />
                     <fileset dir="target/build/resources" 				targetdir="$INSTALL_PATH/resources/" />
@@ -68,9 +68,9 @@
                 <parsable targetfile="$INSTALL_PATH/spark" os="unix" />
                 <!--  <parsable targetfile="$INSTALL_PATH/starter" os="unix"/>  -->
         	
-                <executable targetfile="$INSTALL_PATH/spark" os="unix" />
+                <executable targetfile="$INSTALL_PATH/RuoffMessenger" os="unix" />
                 <executable targetfile="$INSTALL_PATH/starter.exe" os="windows" />
-                <executable targetfile="$INSTALL_PATH/Spark.exe" os="windows" />
+                <executable targetfile="$INSTALL_PATH/RuoffMessenger.exe" os="windows" />
             </pack>    
         </packs>
 	

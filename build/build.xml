@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Spark" default="release" basedir="..">
+<project name="RuoffMessenger" default="release" basedir="..">
 
 	<description>
-        Spark build script.
+        RuoffMessenger build script.
     </description>
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
@@ -25,7 +25,7 @@
 	<property name="version.minor" value="7"/>
 	<property name="version.revision" value="7"/>
 
-    <!-- Spark Build Number
+    <!-- RuoffMessenger Build Number
     Passed into ant via cmd line argument:
         -Dbuild.number=<build number>
     Left blank if omitted.
@@ -67,7 +67,7 @@
 		</else>
 	</if>
 
-	<description>Spark Build</description>
+	<description>RuoffMessenger Build</description>
 	<!--set global properties for this build-->
 	<property name="src" location="${basedir}/src/java"/>
 	<property name="patch.dir" location="${basedir}/patches/"/>
@@ -82,7 +82,7 @@
 	<property name="test.classes" location="${target}/classestest"/>
 	<property name="test.src" location="${basedir}/src/test"/>
 	<property name="target.build" location="${target}/build"/>
-	<property name="sparkplugs.build" location="${target}/sparkplugs"/>
+	<property name="RuoffMessengerplugs.build" location="${target}/RuoffMessengerplugs"/>
 	<property name="target.resources" location="${target.build}/resources"/>
 	<property name="targetlib" location="${target.build}/lib"/>
 	<property name="targetlogs" location="${target.build}/logs"/>
@@ -106,31 +106,31 @@
 
 	<property name="installer.install4j.home" value="/home/j2ee-bamboo/install4j"/>
 	<property name="installer.dest.dir" value="${target}/installer"/>
-	<property name="installer.install4j.srcfile" value="${basedir}/build/installer/spark.install4j"/>
-	<property name="installer.app_name" value="Spark"/>
-	<property name="installer.app_short_name" value="Spark"/>
-	<property name="installer.product_name" value="Spark"/>
+	<property name="installer.install4j.srcfile" value="${basedir}/build/installer/RuoffMessenger.install4j"/>
+	<property name="installer.app_name" value="RuoffMessenger"/>
+	<property name="installer.app_short_name" value="RuoffMessenger"/>
+	<property name="installer.product_name" value="RuoffMessenger"/>
 	<property name="installer.publisher" value="Ignite Realtime"/>
 	<property name="installer.publisher_url" value="www.igniterealtime.org"/>
 	<property name="installer.file_prefix" value="${installer.app_short_name}"/>
 	<property name="installer.release_root_path" value="${target.build}"/>
 
-	<property name="advinst.path" value="C:\Programme\Caphyon\Advanced Installer 7.2.1"/>
-	<property name="mac.build.dir" value="${target}/spark_app"/>
-	<property name="mac.app.file" value="${mac.build.dir}/Spark.app"/>
-	<property name="mac.dmg.file" value="${target}/installer/spark_${version.filename}.dmg"/>
-	<property name="mac.volname" value="Spark_${version.major}.${version.minor}.${version.revision}"/>
+	<property name="advinst.path" value="C:\\Tools\\Advinst" />
+	<property name="mac.build.dir" value="${target}/RuoffMessenger_app"/>
+	<property name="mac.app.file" value="${mac.build.dir}/RuoffMessenger.app"/>
+	<property name="mac.dmg.file" value="${target}/installer/RuoffMessenger_${version.filename}.dmg"/>
+	<property name="mac.volname" value="RuoffMessenger_${version.major}.${version.minor}.${version.revision}"/>
 	<!-- LOCAL PATH for MAC JRE files -->
 	<property name="mac.jre.localdir" value="/Users/j2ee-bamboo/jres"/>
 
-	<property name="win.msi.withjre" value="${basedir}\installer\spark_${version.filename}.msi"/>
-	<property name="win.msi.nojre" value="${basedir}\installer\spark_${version.filename}_online.msi"/>
+	<property name="win.msi.withjre" value="${basedir}\installer\RuoffMessenger_${version.filename}.msi"/>
+	<property name="win.msi.nojre" value="${basedir}\installer\RuoffMessenger_${version.filename}_online.msi"/>
 	<property name="pack200.excludes"
               value="jingle.jar,mail.jar,activation.jar,dom4j.jar,startup.jar,base.jar,i4jruntime.jar"/>
 
 	<!-- IzPack Installer -->
-	<property name="installer.izpack.dir" value="c:/progra~1/IzPack/" />
-	<property name="launch4j.dir" location="c:/progra~2/Launch4j/" />
+	<property name="installer.izpack.dir" value="C:\\Tools\\IzPack" />
+	<property name="launch4j.dir" location="C:\\Tools\\launch4j" />
 
 	<!-- Inno Setup -->
 	<property name="innosetup.dir" location="C:\\Programme\\Inno Setup 5\\" />
@@ -176,8 +176,8 @@
 				</or>
 			</not>
 		</condition>
-		<fail if="ant.not.ok" message="Must use Ant 1.7.1 or higher to build Spark."/>
-		<fail if="java.not.ok" message="Must use JDK 1.8.x or higher to build Spark. Found: ${java.version}"/>
+		<fail if="ant.not.ok" message="Must use Ant 1.7.1 or higher to build RuoffMessenger."/>
+		<fail if="java.not.ok" message="Must use JDK 1.8.x or higher to build RuoffMessenger. Found: ${java.version}"/>
 
 		<!-- Platform-specific initializations -->
 		<condition property="windows">
@@ -347,7 +347,7 @@
 			</manifest>
 		</jar>
 
-		<jar jarfile="${targetlib}/spark.jar" basedir="${classes}" excludes="org/jivesoftware/Startup.class"/>
+		<jar jarfile="${targetlib}/RuoffMessenger.jar" basedir="${classes}" excludes="org/jivesoftware/Startup.class"/>
 
 	</target>
 
@@ -469,8 +469,8 @@
 		<copy file="${basedir}/build/installer/izpack/launch4j.tmpl" tofile="${basedir}/build/installer/izpack/launch4j.xml" />
 		<copy file="${basedir}/build/installer/izpack/launch4j-starter.tmpl" tofile="${basedir}/build/installer/izpack/launch4j-starter.xml" />
 
-		<replace file="${basedir}/build/installer/izpack/launch4j.xml" token="@SPARKDIR@" value="${basedir}/target/build/" />
-		<replace file="${basedir}/build/installer/izpack/launch4j-starter.xml" token="@SPARKDIR@" value="${basedir}/target/build/" />
+		<replace file="${basedir}/build/installer/izpack/launch4j.xml" token="@RuoffMessengerDIR@" value="${basedir}/target/build/" />
+		<replace file="${basedir}/build/installer/izpack/launch4j-starter.xml" token="@RuoffMessengerDIR@" value="${basedir}/target/build/" />
 
 		<launch4j configFile="${basedir}/build/installer/izpack/launch4j.xml" tmpdir="${basedir}" />
 		<launch4j configFile="${basedir}/build/installer/izpack/launch4j-starter.xml" tmpdir="${basedir}" />
@@ -482,7 +482,7 @@
 	</target>
 
 	<!-- base =================================================================================== -->
-	<target name="base" depends="init" description="Produces Base Jars For Spark">
+	<target name="base" depends="init" description="Produces Base Jars For RuoffMessenger">
 		<mkdir dir="${targetlib}" />
 		<!-- Make main Messenger jar -->
 		<jar jarfile="${targetlib}/base.jar" index="true">
@@ -564,34 +564,34 @@
 	</target>
 
 	<target name="development" depends="clean, jar, javadocs"
-            description="Creates a development environment for Sparkplugs">
-		<mkdir dir="${sparkplugs.build}"/>
-		<mkdir dir="${sparkplugs.build}/spark"/>
-		<mkdir dir="${sparkplugs.build}/builder"/>
-		<mkdir dir="${sparkplugs.build}/images"/>
-		<mkdir dir="${sparkplugs.build}/api"/>
+            description="Creates a development environment for RuoffMessengerplugs">
+		<mkdir dir="${RuoffMessengerplugs.build}"/>
+		<mkdir dir="${RuoffMessengerplugs.build}/RuoffMessenger"/>
+		<mkdir dir="${RuoffMessengerplugs.build}/builder"/>
+		<mkdir dir="${RuoffMessengerplugs.build}/images"/>
+		<mkdir dir="${RuoffMessengerplugs.build}/api"/>
 
-		<copy todir="${sparkplugs.build}/spark">
+		<copy todir="${RuoffMessengerplugs.build}/RuoffMessenger">
 			<fileset file="${target.resources}" includes="**/*"/>
 			<fileset file="${targetlib}" includes="**/*"/>
 			<fileset file="${plugins}" includes="**/*"/>
 			<fileset file="${bin}" includes="**/*"/>
 		</copy>
 
-		<copy todir="${sparkplugs.build}">
+		<copy todir="${RuoffMessengerplugs.build}">
 			<fileset file="${targetdocs}/plugin_development_guide.html"/>
 			<fileset file="${targetdocs}/style.css"/>
 			<fileset file="${targetdocs}/examples.jar"/>
 		</copy>
 
-		<copy todir="${sparkplugs.build}/images">
+		<copy todir="${RuoffMessengerplugs.build}/images">
 			<fileset file="${target.build}/documentation/images/*.*"/>
 		</copy>
-		<copy todir="${sparkplugs.build}/api">
+		<copy todir="${RuoffMessengerplugs.build}/api">
 			<fileset file="${target.build}/documentation/api/**"/>
 		</copy>
 
-		<copy todir="${sparkplugs.build}/builder">
+		<copy todir="${RuoffMessengerplugs.build}/builder">
 			<fileset file="${basedir}/build/builder/**"/>
 		</copy>
 	</target>
@@ -651,7 +651,7 @@
 		<fail if="advinst.not.ok"
               message="Path to Advanced Installer not set, or not installed."/>
 
-		<copy file="build\installer\spark.aip.tmpl" tofile="build\installer\spark.aip" />
+		<copy file="build\installer\RuoffMessenger.aip.tmpl" tofile="build\installer\RuoffMessenger.aip" />
 
 		<mkdir dir="${installer.dest.dir}"/>
 
@@ -659,25 +659,25 @@
 
 		<exec executable="${advinst.path}\AdvancedInstaller.com"
               failonerror="true">
-			<arg line="/edit build\installer\spark.aip"/>
+			<arg line="/edit build\installer\RuoffMessenger.aip"/>
 			<arg line="/SetVersion ${version}"/>
 		</exec>
 
 		<exec executable="${advinst.path}\AdvancedInstaller.com"
               failonerror="true">
-			<arg line="/edit build\installer\spark.aip"/>
+			<arg line="/edit build\installer\RuoffMessenger.aip"/>
 			<arg line="/SetPackageName '${win.msi.withjre}' -withjre"/>
 		</exec>
 
 		<exec executable="${advinst.path}\AdvancedInstaller.com"
               failonerror="true">
-			<arg line="/edit build\installer\spark.aip"/>
+			<arg line="/edit build\installer\RuoffMessenger.aip"/>
 			<arg line="/SetPackageName '${win.msi.nojre}' -buildname DefaultBuild"/>
 		</exec>
 
 		<exec executable="${advinst.path}\AdvancedInstaller.com"
               failonerror="true">
-			<arg line="/build build\installer\spark.aip"/>
+			<arg line="/build build\installer\RuoffMessenger.aip"/>
 		</exec>
 	</target>
 
@@ -746,22 +746,22 @@
 
 		<appbundler outputdirectory="${mac.build.dir}"
 					classpathref="osx.lib"
-					name="Spark"
-					displayname="Spark"
+					name="RuoffMessenger"
+					displayname="RuoffMessenger"
 					mainclassname="org.jivesoftware.launcher.Startup"
 					icon="${target}/classes/images/message.icns"
 					shortversion="${version.major}.${version.minor}.${version.revision}"
 					version="${version.extra}"
 					copyright="Ignite Realtime"
-					executablename="SparkLauncher"
-					identifier="com.jivesoftware.SparkBundle"
+					executablename="RuoffMessengerLauncher"
+					identifier="com.jivesoftware.RuoffMessengerBundle"
 					jvmrequired="1.8"
 					jrepreferred="true">
 			<arch name="x86_64"/>
 			<runtime dir="${target}/jre/Contents/Home"/>
 			<option value="-Djava.library.path=$APP_ROOT/Contents/Java/"/>
 			<option value="-Dappdir=$APP_ROOT/Contents/Resources"/>
-			<option value="-Xdock:name=Spark"/>
+			<option value="-Xdock:name=RuoffMessenger"/>
 
 		</appbundler>
 
@@ -801,13 +801,13 @@
 			<arg line="attach '${target}/tmp.dmg' -readwrite -noverify -noautoopen -noidme -mountpoint '${target}/tmp'"/>
 		</exec>
 
-		<!-- SPARK-1091 commented out since it wasn't working with Bamboo remote agent // TODO: fix it
+		<!-- RuoffMessenger-1091 commented out since it wasn't working with Bamboo remote agent // TODO: fix it
 		 <exec executable="cp">
 			<arg line="${basedir}/build/installer/mac/RightDSStore ${basedir}/build/tmp/.DS_Store"/>
 		</exec>
 
 		<exec executable="osascript" dir="${basedir}/build/installer/" failonerror="true">
-			<arg value="mac/dmg_spark.scpt"/>
+			<arg value="mac/dmg_RuoffMessenger.scpt"/>
 			<arg value="${mac.volname}"/>
 			<arg value="images/mac/background/"/>
 			<arg value="648"/>
@@ -847,7 +847,7 @@
 	<property name="work.dir" value="${basedir}/work"/>
 	<property name="debian.dir" value="${basedir}/build/debian"/>
 	<property name="debian.version" value="${version.major}.${version.minor}.${version.revision}"/>
-	<property name="debian.work.dir" value="${work.dir}/debian/spark-${debian.version}"/>
+	<property name="debian.work.dir" value="${work.dir}/debian/RuoffMessenger-${debian.version}"/>
 	<property name="debian.release.dir" value="${basedir}/installer"/>
 	<tstamp>
 		<format property="debian.builddate" pattern="EEE, dd MMM yyyy HH:mm:ss Z" locale="en"/>
@@ -894,11 +894,16 @@
 	<!-- IzPack package ========================================================================= -->
 	<target name="installer.izpack" depends="exe" description="build release a izpack installer">
 		<mkdir dir="${basedir}/installer/" />
+	    <path id="build.classpath">
+	      <fileset dir="${installer.izpack.dir}">
+	        <include name="lib/*.jar" />
+	      </fileset>
+        </path>
 		<taskdef name="IzPack" 
-	             classpath="${installer.izpack.dir}/lib/standalone-compiler.jar"
+	             classpath="build.classpath"
 				 classname="com.izforge.izpack.ant.IzPackTask"/>
 
-		<IzPack input="${basedir}/build/installer/spark-izpack.xml" output="${basedir}/installer/spark-installer.jar" 
+		<IzPack input="${basedir}/build/installer/RuoffMessenger-izpack.xml" output="${basedir}/installer/RuoffMessenger-installer.jar" 
 				installerType="standard" izPackDir="${installer.izpack.dir}" basedir="${basedir}"/>
 	</target>
 
@@ -914,8 +919,8 @@
                  classpathref="build.classpath"
 				 classname="com.izforge.izpack.ant.IzPackTask"/>
 
-		<IzPack input="${basedir}/build/installer/spark-izpack5.xml" 
-                output="${basedir}/installer/spark-installer.jar"
+		<IzPack input="${basedir}/build/installer/RuoffMessenger-izpack5.xml" 
+                output="${basedir}/installer/RuoffMessenger-installer.jar"
 				installerType="standard" 
                 inheritAll="true"
                 izPackDir="${installer.izpack.dir}" 
@@ -926,8 +931,8 @@
 	<target name="installer.izpack.exe" depends="installer.izpack" description="build release executable izpack installer">
 		<exec executable="python" failonerror="true">
 			<arg line="${installer.izpack.dir}/utils/wrappers/izpack2exe/izpack2exe.py"/>
-			<arg line="--file=${basedir}/installer/spark-installer.jar"/>
-			<arg line="--output=${basedir}/installer/spark-installer.exe"/>
+			<arg line="--file=${basedir}/installer/RuoffMessenger-installer.jar"/>
+			<arg line="--output=${basedir}/installer/RuoffMessenger-installer.exe"/>
 			<arg line="--no-upx"/>
 		</exec>
 	</target>
@@ -943,22 +948,22 @@
 		<copy file="${basedir}/build/installer/izpack/launch4j.tmpl" tofile="${basedir}/build/installer/izpack/launch4j.xml" />
 		<copy file="${basedir}/build/installer/izpack/launch4j-starter.tmpl" tofile="${basedir}/build/installer/izpack/launch4j-starter.xml" />
 
-		<replace file="${basedir}/build/installer/izpack/launch4j.xml" token="@SPARKDIR@" value="${basedir}/target/build/" />
-		<replace file="${basedir}/build/installer/izpack/launch4j-starter.xml" token="@SPARKDIR@" value="${basedir}/target/build/" />
+		<replace file="${basedir}/build/installer/izpack/launch4j.xml" token="@RuoffMessengerDIR@" value="${basedir}/target/build/" />
+		<replace file="${basedir}/build/installer/izpack/launch4j-starter.xml" token="@RuoffMessengerDIR@" value="${basedir}/target/build/" />
 
 		<launch4j configFile="${basedir}/build/installer/izpack/launch4j.xml" tmpdir="${temp.dir}" />
 		<launch4j configFile="${basedir}/build/installer/izpack/launch4j-starter.xml" tmpdir="${temp.dir}" />
 
 		<exec executable="${innosetup.dir}/ISCC.exe" failonerror="true">
 			<arg line="/Oinstaller"/>
-			<arg line="/Fspark-setup-iss.exe"/>
-			<arg line="build/installer/spark.iss"/>
+			<arg line="/FRuoffMessenger-setup-iss.exe"/>
+			<arg line="build/installer/RuoffMessenger.iss"/>
 		</exec>
 	</target>
 
 	<!-- dist.src =============================================================================== -->
-	<property name="release.src.out.dir" value="target/src/Spark-${version}" />
-	<property name="release.fullname.src" value="spark_src_${version}"/>
+	<property name="release.src.out.dir" value="target/src/RuoffMessenger-${version}" />
+	<property name="release.fullname.src" value="RuoffMessenger_src_${version}"/>
 	<target name="dist.src" depends="release.javadocs" description="Creates a source distribution package">
 
 		<mkdir dir="${release.dir}"/>
@@ -1006,11 +1011,11 @@
 	<property name="bundle.jre" value="false" />
 	<property name="target.work.subdir" value="rpm" />
 	<property name="target.rpm" value="${work.dir}/${target.work.subdir}" />
-	<property name="rpm.spec.file" value="${basedir}/build/rpm/spark.spec"/>
+	<property name="rpm.spec.file" value="${basedir}/build/rpm/RuoffMessenger.spec"/>
 	<tstamp>
 		<format property="rpm.builddate" pattern="EEE MMM dd yyyy" locale="en"/>
 	</tstamp>
-	<target name="installer.rpm" depends="dist.src,build.plugins" description="Builds a rpm of spark.">
+	<target name="installer.rpm" depends="dist.src,build.plugins" description="Builds a rpm of RuoffMessenger.">
 
 		<mkdir dir="${target.rpm}/SPECS" />
 		<mkdir dir="${target.rpm}/SOURCES" />
@@ -1018,7 +1023,7 @@
 		<mkdir dir="${target.rpm}/SRPMS" />
 		<mkdir dir="${target.rpm}/RPMS" />
 
-		<copy tofile="${target.rpm}/SPECS/spark.spec" file="${rpm.spec.file}" />
+		<copy tofile="${target.rpm}/SPECS/RuoffMessenger.spec" file="${rpm.spec.file}" />
 		<if>
 			<equals arg1="${bundle.jre}" arg2="true"/>
 			<then>
@@ -1029,9 +1034,9 @@
 		<copy todir="${target.rpm}/SOURCES" file="${release.dir}/${release.fullname.src}.tar.gz" />
 
 
-		<rpm specFile="spark.spec"
+		<rpm specFile="RuoffMessenger.spec"
              topDir="${target.rpm}"
-             command="-ba --define 'SPARK_VERSION ${version}' --define 'SPARK_SOURCE ${release.fullname.src}.tar.gz'"
+             command="-ba --define 'RuoffMessenger_VERSION ${version}' --define 'RuoffMessenger_SOURCE ${release.fullname.src}.tar.gz'"
              failOnError="true"
              />
 

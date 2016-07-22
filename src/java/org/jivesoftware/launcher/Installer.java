@@ -51,23 +51,23 @@ public class Installer implements InstallAction {
             return true;
         }
 
-        final File sparkDirectory;
-        String sparkPath = "";
+        final File RuoffMessengerDirectory;
+        String RuoffMessengerPath = "";
         try {
-            sparkDirectory = new File(installerContext.getInstallationDirectory(), "Spark.exe");
-            sparkPath = sparkDirectory.getCanonicalPath();
+            RuoffMessengerDirectory = new File(installerContext.getInstallationDirectory(), "RuoffMessenger.exe");
+            RuoffMessengerPath = RuoffMessengerDirectory.getCanonicalPath();
 
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        if (sparkPath != null && sparkPath.length() > 0) {
-            // Add Spark to startup
-            addSparkToStartup(sparkPath);
+        if (RuoffMessengerPath != null && RuoffMessengerPath.length() > 0) {
+            // Add RuoffMessenger to startup
+            addRuoffMessengerToStartup(RuoffMessengerPath);
 
-            // Add Spark XMPP:URI mapping
-            setURI(sparkPath);
+            // Add RuoffMessenger XMPP:URI mapping
+            setURI(RuoffMessengerPath);
         }
 
 
@@ -75,17 +75,17 @@ public class Installer implements InstallAction {
     }
 
     public void rollback(InstallerContext installerContext) {
-        WinRegistry.deleteValue(RegistryRoot.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Run", "Spark");
+        WinRegistry.deleteValue(RegistryRoot.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Run", "RuoffMessenger");
     }
 
     /**
-     * Adds Spark to the users registry.
+     * Adds RuoffMessenger to the users registry.
      *
-     * @param sparkPath the canonical path to spark.
+     * @param RuoffMessengerPath the canonical path to RuoffMessenger.
      */
-    public void addSparkToStartup(String sparkPath) {
+    public void addRuoffMessengerToStartup(String RuoffMessengerPath) {
         try {
-            WinRegistry.setValue(RegistryRoot.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Run", "Spark", sparkPath);
+            WinRegistry.setValue(RegistryRoot.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Run", "RuoffMessenger", RuoffMessengerPath);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -93,15 +93,15 @@ public class Installer implements InstallAction {
     }
 
     /**
-     * Adds Spark to the users registry to allow for XMPP URI mapping.
+     * Adds RuoffMessenger to the users registry to allow for XMPP URI mapping.
      *
-     * @param path the installation directory of spark.
+     * @param path the installation directory of RuoffMessenger.
      */
     private void setURI(String path) {
         boolean exists = WinRegistry.keyExists(RegistryRoot.HKEY_CLASSES_ROOT, "xmpp");
         if (exists) {
         }
-        //   JOptionPane.showConfirmDialog(null, "Another application is currently registered to handle XMPP instant messaging. Make Spark the default XMPP instant messaging client?", "Confirmation",         }
+        //   JOptionPane.showConfirmDialog(null, "Another application is currently registered to handle XMPP instant messaging. Make RuoffMessenger the default XMPP instant messaging client?", "Confirmation",         }
         WinRegistry.deleteKey(RegistryRoot.HKEY_CLASSES_ROOT, "xmpp", true);
 
         WinRegistry.createKey(RegistryRoot.HKEY_CLASSES_ROOT, "xmpp");

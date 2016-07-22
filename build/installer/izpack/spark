@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Spark Startup
+# Ruoff Messenger Startup
 #
 SPARK_OPTS=""
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <shortcuts>
 	<skipIfNotSupported/>
-	<programGroup defaultName="Spark" location="applications"/>
+	<programGroup defaultName="RuoffMessenger" location="applications"/>
 	
 	<shortcut
-		name="Spark"
+		name="RuoffMessenger"
 		programGroup="yes"
 		desktop="no"
 		applications="no"
 		startMenu="no"
 		startup="no"
-		target="$INSTALL_PATH/spark"
+		target="$INSTALL_PATH/RuoffMessenger"
 		commandLine=""
 		type="Application"
         encoding="UTF-8"
@@ -18,14 +18,14 @@
 		workingDirectory="$INSTALL_PATH/"
 		description="Spark"
 		iconIndex="0"
-		iconFile="$INSTALL_PATH/resources/spark-32x32.png"
+		iconFile="$INSTALL_PATH/resources/RuoffMessenger-32x32.png"
 		initialState="noShow">
-  		description="Spark - XMPP Client"
-		<createForPack name="Spark"/>
+  		description="Ruoff Messenger - XMPP Client"
+		<createForPack name="RuoffMessenger"/>
 	</shortcut>
 	
 	<shortcut
-            name="Spark Uninstaller"
+            name="Ruoff Messenger Uninstaller"
             programGroup="yes"
             desktop="no"
             applications="no"
@@ -39,8 +39,8 @@
             encoding="UTF-8"
             KdeSubstUID="true"
             workingDirectory=""
-            description="This uninstalls Spark @build.number@">
-		<createForPack name="Spark"/>
+            description="This uninstalls Ruoff Messenger @build.number@">
+		<createForPack name="RuoffMessenger"/>
 	</shortcut>
 	
 </shortcuts>

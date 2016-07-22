@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <shortcuts>
+  <skipIfNotSupported />
 
-	<programGroup defaultName="Spark" location="applications"/>
+	<programGroup defaultName="RuoffMessenger" location="applications"/>
 	
 	<shortcut
-		name="Spark"
+		name="Ruoff Messenger"
 		programGroup="yes"
 		desktop="yes"
 		applications="no"
 		startMenu="no"
 		startup="no"
-		target="$INSTALL_PATH\Spark.exe"
+		target="$INSTALL_PATH\RuoffMessenger.exe"
 		commandLine=""
 		description="Spark"
-		iconFile="$INSTALL_PATH\resources\spark.ico"
+		iconFile="$INSTALL_PATH\resources\RuoffMessenger.ico"
 		iconIndex="0"
 		initialState="noShow">
   
-		<createForPack name="Spark"/>
+		<createForPack name="RuoffMessenger"/>
 
 	</shortcut>
 	
 	<shortcut
-            name="Spark Uninstaller"
+            name="Ruoff Messenger Uninstaller"
             programGroup="yes"
             desktop="no"
             applications="no"
@@ -32,8 +33,8 @@
             commandLine=""
             iconFile="%SystemRoot%\system32\SHELL32.dll"
             iconIndex="31"
-            description="This uninstalls Spark @build.number@">
-		<createForPack name="Spark"/>
+            description="This uninstalls Ruoff Messenger @build.number@">
+		<createForPack name="RuoffMessenger"/>
 	</shortcut>
 	
 </shortcuts>

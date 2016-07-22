@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
 <installation version="1.0">
     <info>
-        <appname>Spark</appname>
+        <appname>RuoffMessenger</appname>
         <appversion>2.6.0</appversion>
-        <url>http://www.igniterealtime.org</url>
+        <url>http://www.ruoff.com</url>
         <!--<pack200/>-->           <!-- Problem with the latest IzPack Release -->
         <!--<run-privileged />-->   <!-- Problem with the latest IzPack Release -->
         
@@ -69,11 +69,11 @@
 	</listeners>
 	        
     <packs>
-        <pack name="Spark" required="yes">
+        <pack name="RuoffMessenger" required="yes">
         	<description>XMPP Client</description>
-        	<file src="src/resources/images/spark.ico"			targetdir="$INSTALL_PATH/resources/"/>
-        	<file src="src/resources/images/spark-32x32.png"	targetdir="$INSTALL_PATH/resources/"/>
-        	<file src="target/build/Spark.exe"					targetdir="$INSTALL_PATH" os="windows"/>
+        	<file src="src/resources/images/RuoffMessenger.ico"			targetdir="$INSTALL_PATH/resources/"/>
+        	<file src="src/resources/images/RuoffMessenger-32x32.png"	targetdir="$INSTALL_PATH/resources/"/>
+        	<file src="target/build/RuoffMessenger.exe"					targetdir="$INSTALL_PATH" os="windows"/>
         	<file src="target/build/starter.exe"				targetdir="$INSTALL_PATH" os="windows"/>
         	<file src="build/installer/izpack/spark" 			targetdir="$INSTALL_PATH" os="unix"/>
         	<file src="target/build/lib" 						targetdir="$INSTALL_PATH"/>
@@ -82,12 +82,12 @@
         	<file src="target/build/resources" 					targetdir="$INSTALL_PATH"/>
         	<file src="target/build/xtra" 						targetdir="$INSTALL_PATH"/>
         	
-        	<parsable targetfile="$INSTALL_PATH/spark" os="unix"/>
+        	<parsable targetfile="$INSTALL_PATH/RuoffMessenger" os="unix"/>
         	<!--  <parsable targetfile="$INSTALL_PATH/starter" os="unix"/>  -->
         	
-        	<executable targetfile="$INSTALL_PATH/spark" os="unix"/>
+        	<executable targetfile="$INSTALL_PATH/RuoffMessenger" os="unix"/>
         	<executable targetfile="$INSTALL_PATH/starter.exe" 	os="windows"/>
-        	<executable targetfile="$INSTALL_PATH/Spark.exe" 	os="windows"/>
+        	<executable targetfile="$INSTALL_PATH/RuoffMessenger.exe" 	os="windows"/>
     	</pack>    
 	</packs>
 	
